@@ -8,6 +8,7 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "fastapi (>=0.118.0,<0.119.0)"
 ]
 
 [tool.poetry]
@@ -16,3 +17,6 @@ packages = [{include = "project_dullahan", from = "src"}]
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+main = "project_dullahan.app:main"
