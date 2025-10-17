@@ -1,7 +1,7 @@
 [project]
 name = "project-dullahan"
 version = "0.0.1"
-description = ""
+description = "NTLM hash cracking automation via HashCat client-server functionality"
 authors = [
     {name = "arcadia16",email = "arcadia16@atomicmail.io"}
 ]
@@ -12,11 +12,11 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "project_dullahan", from = "src"}]
+packages = [{include = "backend", from = "src"}]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-main = "project_dullahan.app:main"
+main = "backend.app:main"
