@@ -1,3 +1,10 @@
+# Custom ignore for security
+*.ntds
+*.ntds.*
+*.brain
+*.dict
+*.hash
+dullahan_drop/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
