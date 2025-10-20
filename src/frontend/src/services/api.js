@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-const API_BASE_URL = 'http://localhost:5000'  // Your FastAPI backend URL
-
 const apiClient = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json'
   }
@@ -13,13 +11,13 @@ export default {
   // Start a new audit job
   async startAudit(auditData) {
     console.log(auditData)
-    const response = await apiClient.post('/api/start/', auditData)
+    const response = await apiClient.post('/start/', auditData)
     return response.data
   },
 
   // Check audit job status
   async getAuditStatus(jobId) {
-    const response = await apiClient.get('/api/status/${jobId}')
+    const response = await apiClient.get('/status/${jobId}')
     return response.data
   },
 

@@ -3,18 +3,18 @@
     <Toast />
     <nav class="navbar">
       <div class="nav-container">
-        <h1>🔒 NTLM Security Audit Tool</h1>
+        <h1>🔒 Project Dullahan - NTLM Security Audit Tool</h1>
         <p>Domain Password Security Assessment</p>
       </div>
     </nav>
-    
+
     <main class="main-content">
       <router-view />
     </main>
     
-    <footer class="footer">
+    <!-- <footer class="footer">
       <p>⚠️ Use only on authorized domains. Handle credentials securely.</p>
-    </footer>
+    </footer> -->
   </div>
 </template>
 
@@ -44,7 +44,7 @@ body {
 }
 
 .navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: black;
   color: white;
   padding: 1.5rem 0;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);

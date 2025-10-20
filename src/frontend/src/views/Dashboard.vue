@@ -1,18 +1,18 @@
 <template>
   <div class="dashboard">
     <div class="grid">
+      <Celty></Celty>
       <div class="col-12 md:col-6">
         <Card class="audit-form-card">
-          <template #title>🚀 Start New Audit</template>
+          <template #title>📊 Audit params</template>
           <template #content>
             <AuditForm @audit-started="handleAuditStarted" />
           </template>
         </Card>
       </div>
-      
       <div class="col-12 md:col-6">
         <Card class="status-card">
-          <template #title>📊 Audit Status</template>
+          <template #title>📊 Audit status</template>
           <template #content>
             <JobStatus 
               v-if="currentJobId" 
@@ -20,7 +20,7 @@
               @job-completed="handleJobCompleted" 
             />
             <div v-else class="no-job">
-              <p>No active audit job. Start a new audit to monitor progress.</p>
+              <p>No active jobs.</p>
             </div>
           </template>
         </Card>
@@ -43,6 +43,7 @@ import Card from 'primevue/card'
 import AuditForm from '../components/AuditForm.vue'
 import JobStatus from '../components/JobStatus.vue'
 import ResultsDisplay from '../components/ResultsDisplay.vue'
+import Celty from '@/components/Celty.vue'
 
 export default {
   name: 'Dashboard',
@@ -50,7 +51,8 @@ export default {
     Card,
     AuditForm,
     JobStatus,
-    ResultsDisplay
+    ResultsDisplay,
+    Celty
   },
   setup() {
     const toast = useToast()

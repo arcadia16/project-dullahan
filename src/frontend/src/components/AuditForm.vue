@@ -2,7 +2,7 @@
   <div class="audit-form">
     <form @submit.prevent="submitForm">
       <div class="field">
-        <label for="domain">Domain</label>
+        <label for="domain">Target domain</label>
         <InputText 
           id="domain"
           v-model="formData.domain" 
@@ -13,7 +13,7 @@
       </div>
       
       <div class="field">
-        <label for="username">Username</label>
+        <label for="username">Admin username</label>
         <InputText 
           id="username"
           v-model="formData.username" 
@@ -24,19 +24,18 @@
       </div>
       
       <div class="field">
-        <label for="password">Password</label>
+        <label for="password">Hash</label>
         <InputText 
-          id="password"
-          v-model="formData.password" 
-          type="password" 
-          placeholder="Privileged account password" 
+          id="hash"
+          v-model="formData.password"  
+          placeholder="Admin hash" 
           required
           class="w-full"
         />
       </div>
       
       <div class="field">
-        <label for="wordlist">Wordlist Path</label>
+        <label for="wordlist">Choose wordlists</label>
         <InputText 
           id="wordlist"
           v-model="formData.wordlist_path" 
@@ -44,19 +43,12 @@
           required
           class="w-full"
         />
-        <small class="text-sm text-gray-600">Path to wordlist file on the server</small>
-      </div>
-      
-      <div class="field-checkbox">
-        <label>
-          <input type="checkbox" v-model="formData.agree_terms" required />
-          I have authorization to audit this domain
-        </label>
+        <small class="text-sm text-gray-600">make drop list later</small>
       </div>
       
       <Button 
         type="submit" 
-        label="Start Security Audit" 
+        label="Start the crack!" 
         icon="pi pi-shield"
         :loading="loading"
         class="w-full"
@@ -86,9 +78,8 @@ export default {
     const formData = ref({
       domain: '',
       username: '',
-      password: '',
-      wordlist_path: '',
-      agree_terms: false
+      hash: '',
+      wordlist_path: ''
     })
 
     const submitForm = async () => {
@@ -102,9 +93,8 @@ export default {
         formData.value = {
           domain: '',
           username: '',
-          password: '',
-          wordlist_path: '',
-          agree_terms: false
+          hash: '',
+          wordlist_path: ''
         }
       } catch (error) {
         toast.add({

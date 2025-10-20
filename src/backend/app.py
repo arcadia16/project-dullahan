@@ -1,5 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -17,8 +19,13 @@ app.add_middleware(
      allow_headers=["*"],
 )
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 class DataTest(BaseModel):
-     msg: int
+     domain: str
+     username: str
+     hash: str
+     wordlist_path: str
 
 # poetry run main, look at pyproject.toml
 """
@@ -49,7 +56,7 @@ async def test(id: int):
 
 @app.post("/api/start/")
 async def get_post_data(data: DataTest):
-     print(data.msg)
+     print(data)
      return {"msg": "api accepted data"}
 
 def launch():
