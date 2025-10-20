@@ -5,13 +5,13 @@ const routes = [
   {
     path: '/',
     name: 'Dashboard',
-    component: Dashboard
-  }
+    component: Dashboard,
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
 export default router

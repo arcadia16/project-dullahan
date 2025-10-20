@@ -11,7 +11,7 @@
     <main class="main-content">
       <router-view />
     </main>
-    
+
     <!-- <footer class="footer">
       <p>⚠️ Use only on authorized domains. Handle credentials securely.</p>
     </footer> -->
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
 }
 </script>
 
@@ -47,7 +47,7 @@ body {
   background: black;
   color: white;
   padding: 1.5rem 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {

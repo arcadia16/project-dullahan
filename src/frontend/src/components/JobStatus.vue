@@ -2,43 +2,40 @@
   <div class="job-status">
     <div class="status-header">
       <h3>Job: {{ jobId }}</h3>
-      <Button 
-        icon="pi pi-refresh" 
-        @click="checkStatus" 
+      <Button
+        icon="pi pi-refresh"
+        @click="checkStatus"
         :loading="loading"
         class="p-button-rounded p-button-outlined"
       />
     </div>
-    
+
     <div class="status-content">
       <div v-if="statusData" class="status-info">
         <div class="status-badge" :class="statusClass">
           {{ statusData.status.toUpperCase() }}
         </div>
-        
+
         <p class="status-message">{{ statusData.message }}</p>
-        
-        <ProgressSpinner 
-          v-if="statusData.status === 'running'" 
-          style="width: 50px; height: 50px" 
-        />
-        
+
+        <ProgressSpinner v-if="statusData.status === 'running'" style="width: 50px; height: 50px" />
+
         <div v-if="statusData.results" class="results-preview">
           <p><strong>Cracked Passwords:</strong> {{ statusData.results.cracked_count }}</p>
           <p><strong>Output File:</strong> {{ statusData.results.output_file }}</p>
         </div>
       </div>
-      
+
       <div v-else class="loading-status">
         <ProgressSpinner />
         <p>Loading status...</p>
       </div>
     </div>
-    
+
     <div class="status-actions">
-      <Button 
-        label="Check Status" 
-        @click="checkStatus" 
+      <Button
+        label="Check Status"
+        @click="checkStatus"
         :loading="loading"
         class="p-button-outlined"
       />
@@ -57,13 +54,13 @@ export default {
   name: 'JobStatus',
   components: {
     Button,
-    ProgressSpinner
+    ProgressSpinner,
   },
   props: {
     jobId: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   emits: ['job-completed'],
   setup(props, { emit }) {
@@ -76,7 +73,7 @@ export default {
       loading.value = true
       try {
         statusData.value = await api.getAuditStatus(props.jobId)
-        
+
         // Emit event if job is completed
         if (statusData.value.status === 'completed' && statusData.value.results) {
           emit('job-completed', statusData.value.results)
@@ -87,7 +84,7 @@ export default {
           severity: 'error',
           summary: 'Status Check Failed',
           detail: error.response?.data?.detail || 'Failed to check status',
-          life: 3000
+          life: 3000,
         })
       } finally {
         loading.value = false
@@ -117,10 +114,14 @@ export default {
     const statusClass = computed(() => {
       if (!statusData.value) return ''
       switch (statusData.value.status) {
-        case 'running': return 'status-running'
-        case 'completed': return 'status-completed'
-        case 'error': return 'status-error'
-        default: return ''
+        case 'running':
+          return 'status-running'
+        case 'completed':
+          return 'status-completed'
+        case 'error':
+          return 'status-error'
+        default:
+          return ''
       }
     })
 
@@ -128,9 +129,9 @@ export default {
       loading,
       statusData,
       checkStatus,
-      statusClass
+      statusClass,
     }
-  }
+  },
 }
 </script>
 

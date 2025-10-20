@@ -3,52 +3,52 @@
     <form @submit.prevent="submitForm">
       <div class="field">
         <label for="domain">Target domain</label>
-        <InputText 
+        <InputText
           id="domain"
-          v-model="formData.domain" 
-          placeholder="example.com" 
+          v-model="formData.domain"
+          placeholder="example.com"
           required
           class="w-full"
         />
       </div>
-      
+
       <div class="field">
         <label for="username">Admin username</label>
-        <InputText 
+        <InputText
           id="username"
-          v-model="formData.username" 
-          placeholder="AdminUser" 
+          v-model="formData.username"
+          placeholder="AdminUser"
           required
           class="w-full"
         />
       </div>
-      
+
       <div class="field">
         <label for="password">Hash</label>
-        <InputText 
+        <InputText
           id="hash"
-          v-model="formData.password"  
-          placeholder="Admin hash" 
+          v-model="formData.password"
+          placeholder="Admin hash"
           required
           class="w-full"
         />
       </div>
-      
+
       <div class="field">
         <label for="wordlist">Choose wordlists</label>
-        <InputText 
+        <InputText
           id="wordlist"
-          v-model="formData.wordlist_path" 
-          placeholder="/path/to/wordlist.dict" 
+          v-model="formData.wordlist_path"
+          placeholder="/path/to/wordlist.dict"
           required
           class="w-full"
         />
         <small class="text-sm text-gray-600">make drop list later</small>
       </div>
-      
-      <Button 
-        type="submit" 
-        label="Start the crack!" 
+
+      <Button
+        type="submit"
+        label="Start the crack!"
         icon="pi pi-shield"
         :loading="loading"
         class="w-full"
@@ -68,40 +68,40 @@ export default {
   name: 'AuditForm',
   components: {
     InputText,
-    Button
+    Button,
   },
   emits: ['audit-started'],
   setup(props, { emit }) {
     const toast = useToast()
     const loading = ref(false)
-    
+
     const formData = ref({
       domain: '',
       username: '',
       hash: '',
-      wordlist_path: ''
+      wordlist_path: '',
     })
 
     const submitForm = async () => {
       loading.value = true
-      
+
       try {
         const response = await api.startAudit(formData.value)
         emit('audit-started', response.job_id)
-        
+
         // Reset form
         formData.value = {
           domain: '',
           username: '',
           hash: '',
-          wordlist_path: ''
+          wordlist_path: '',
         }
       } catch (error) {
         toast.add({
           severity: 'error',
           summary: 'Audit Failed',
           detail: error.response?.data?.detail || 'Failed to start audit',
-          life: 5000
+          life: 5000,
         })
       } finally {
         loading.value = false
@@ -111,9 +111,9 @@ export default {
     return {
       formData,
       loading,
-      submitForm
+      submitForm,
     }
-  }
+  },
 }
 </script>
 

@@ -14,17 +14,17 @@
         <Card class="status-card">
           <template #title>📊 Audit status</template>
           <template #content>
-            <JobStatus 
-              v-if="currentJobId" 
-              :jobId="currentJobId" 
-              @job-completed="handleJobCompleted" 
+            <JobStatus
+              v-if="currentJobId"
+              :jobId="currentJobId"
+              @job-completed="handleJobCompleted"
             />
             <div v-else class="no-job">
               <p>No active jobs.</p>
             </div>
           </template>
         </Card>
-        
+
         <Card v-if="results" class="results-card">
           <template #title>✅ Audit Results</template>
           <template #content>
@@ -52,7 +52,7 @@ export default {
     AuditForm,
     JobStatus,
     ResultsDisplay,
-    Celty
+    Celty,
   },
   setup() {
     const toast = useToast()
@@ -66,7 +66,7 @@ export default {
         severity: 'success',
         summary: 'Audit Started',
         detail: `Job ID: ${jobId}`,
-        life: 3000
+        life: 3000,
       })
     }
 
@@ -76,7 +76,7 @@ export default {
         severity: 'info',
         summary: 'Audit Completed',
         detail: `Found ${jobResults.cracked_count} cracked passwords`,
-        life: 5000
+        life: 5000,
       })
     }
 
@@ -84,9 +84,9 @@ export default {
       currentJobId,
       results,
       handleAuditStarted,
-      handleJobCompleted
+      handleJobCompleted,
     }
-  }
+  },
 }
 </script>
 

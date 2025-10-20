@@ -3,8 +3,8 @@ import axios from 'axios'
 const apiClient = axios.create({
   baseURL: '/api',
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 })
 
 export default {
@@ -26,5 +26,5 @@ export default {
     // This would need a new endpoint in your FastAPI to serve the results
     const response = await apiClient.get('/api/v1/audit/results/${outputFile}')
     return response.data
-  }
+  },
 }

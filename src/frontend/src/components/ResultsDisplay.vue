@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    
+
     <div v-if="crackedPasswords.length > 0" class="cracked-passwords">
       <h4>Cracked Passwords</h4>
       <DataTable :value="crackedPasswords" class="p-datatable-sm">
@@ -22,14 +22,10 @@
         <Column field="hash" header="NTLM Hash"></Column>
       </DataTable>
     </div>
-    
+
     <div v-else class="no-results">
       <p>No passwords were cracked with the current wordlist.</p>
-      <Button 
-        label="Try Different Wordlist" 
-        icon="pi pi-refresh" 
-        class="p-button-outlined"
-      />
+      <Button label="Try Different Wordlist" icon="pi pi-refresh" class="p-button-outlined" />
     </div>
   </div>
 </template>
@@ -46,13 +42,13 @@ export default {
   components: {
     DataTable,
     Column,
-    Button
+    Button,
   },
   props: {
     results: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
     const crackedPasswords = ref([])
@@ -69,9 +65,9 @@ export default {
     })
 
     return {
-      crackedPasswords
+      crackedPasswords,
     }
-  }
+  },
 }
 </script>
 
