@@ -3,10 +3,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+origins = [
+     "http://localhost:5173",
+     "http://127.0.0.1:5173"
+]
+
 app = FastAPI(title="NTLM Audit Tool", version="0.0.1")
 app.add_middleware(
      CORSMiddleware,
-     allow_origins=["*"],
+     allow_origins=origins,
      allow_credentials=True,
      allow_methods=["*"],
      allow_headers=["*"],
@@ -37,10 +42,15 @@ class DataTest(BaseModel):
 async def root():
      return {"message": "Hello from Dullahan!"}
 
-@app.post("/start/")
+@app.get("/api/status/{id}")
+async def test(id: int):
+     print(f"Got GET with {id}")
+     return {"msg": id}
+
+@app.post("/api/start/")
 async def get_post_data(data: DataTest):
      print(data.msg)
      return {"msg": "api accepted data"}
 
 def launch():
-     uvicorn.run("backend.app:app", host="0.0.0.0", port=8000, reload=True)
+     uvicorn.run("backend.app:app", host="0.0.0.0", port=5000, reload=True)
