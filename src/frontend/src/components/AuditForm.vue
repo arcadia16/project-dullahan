@@ -24,10 +24,10 @@
       </div>
 
       <div class="field">
-        <label for="password">Hash</label>
+        <label for="hash">Hash</label>
         <InputText
           id="hash"
-          v-model="formData.password"
+          v-model="formData.hash"
           placeholder="Admin hash"
           required
           class="w-full"

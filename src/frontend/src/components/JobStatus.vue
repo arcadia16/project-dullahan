@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useToast } from 'primevue/usetoast'
 import Button from 'primevue/button'
 import ProgressSpinner from 'primevue/progressspinner'
@@ -88,6 +88,7 @@ export default {
         })
       } finally {
         loading.value = false
+        stopPolling()
       }
     }
 

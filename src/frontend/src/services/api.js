@@ -17,14 +17,14 @@ export default {
 
   // Check audit job status
   async getAuditStatus(jobId) {
-    const response = await apiClient.get('/status/${jobId}')
+    const response = await apiClient.get(`/status/${jobId}`)
     return response.data
   },
 
   // Get cracked passwords (if any)
   async getCrackedPasswords(outputFile) {
     // This would need a new endpoint in your FastAPI to serve the results
-    const response = await apiClient.get('/api/v1/audit/results/${outputFile}')
+    const response = await apiClient.get(`/api/v1/audit/results/${outputFile}`)
     return response.data
   },
 }

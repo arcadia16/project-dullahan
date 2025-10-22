@@ -59,12 +59,12 @@ async def root():
 @app.get("/api/status/{id}")
 async def test(id: int):
      print(f"Got GET with {id}")
-     return {"msg": id}
+     return {"msg": id, "status": "finished"}
 
 @app.post("/api/start/")
 async def get_post_data(data: DataTest):
-     print(data)
-     return {"msg": "api accepted data"}
+     print(f"[*] Audit start: {data.domain}/{data.username}:{data.hash} on <insert controller> with {data.wordlist_path} wordlist.")
+     return { "job_id": str(123) }
 
 def launch():
      uvicorn.run("backend.app:app", host="0.0.0.0", port=5000, reload=True)
