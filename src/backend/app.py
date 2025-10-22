@@ -19,7 +19,14 @@ app.add_middleware(
      allow_headers=["*"],
 )
 
+"""
+Somehow this (V) stopped working a day after.
 app.mount("/static", StaticFiles(directory="static"), name="static")
+"""
+from pathlib import Path
+parent_dir = Path(__file__).resolve().parent / "static"
+app.mount("/static", StaticFiles(directory=str(parent_dir)), name="static")
+
 
 class DataTest(BaseModel):
      domain: str
