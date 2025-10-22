@@ -15,10 +15,10 @@ async def index():
 
 @router.get("/status/{id}")
 async def test(id: str):
-     print(f"Got GET with {id}")
-     return {"msg": id, "status": "finished"}
+    print(f"Got GET with {id}")
+    return {"msg": id, "status": "finished"}
 
 @router.post("/start/")
 async def get_post_data(data: AuditRequest):
-     print(f"[*] Audit start: {data.domain}/{data.username}:{data.hash} on {data.controller_ip} with {data.wordlist_path} wordlist.")
-     return { "job_id": str(uuid.uuid4()) }
+    print(f"[*] Audit start: {data.domain}/{data.username}:{data.hash} on {data.controller_ip} with {data.wordlist_path} wordlist.")
+    return { "job_id": str(uuid.uuid4()) }
