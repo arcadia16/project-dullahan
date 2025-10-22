@@ -13,6 +13,17 @@
       </div>
 
       <div class="field">
+        <label for="controller">Target DC</label>
+        <InputText
+          id="controller"
+          v-model="formData.controller_ip"
+          placeholder="0.0.0.0"
+          required
+          class="w-full"
+        />
+      </div>
+
+      <div class="field">
         <label for="username">Admin username</label>
         <InputText
           id="username"
@@ -77,6 +88,7 @@ export default {
 
     const formData = ref({
       domain: '',
+      controller_ip: '',
       username: '',
       hash: '',
       wordlist_path: '',
