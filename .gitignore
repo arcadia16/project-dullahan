@@ -5,6 +5,7 @@
 *.dict
 *.hash
 dullahan_drop/
+nxc_param.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

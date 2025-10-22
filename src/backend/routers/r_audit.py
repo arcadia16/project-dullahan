@@ -1,18 +1,20 @@
 import uuid
 from fastapi import APIRouter, BackgroundTasks
 
-from ..models.audit_models import AuditRequest
+from ..models.audit_models import AuditRequest, HashcatResult, AuditStatus
 
 router = APIRouter(
     prefix="/api"
 )
+
+jobs = {}
 
 @router.get("/")
 async def index():
     return {}
 
 @router.get("/status/{id}")
-async def test(id: int):
+async def test(id: str):
      print(f"Got GET with {id}")
      return {"msg": id, "status": "finished"}
 
