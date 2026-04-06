@@ -1,0 +1,4 @@
+forgettobeam.sh
+*.drawio*
+*.pyc
+__pycache__/
